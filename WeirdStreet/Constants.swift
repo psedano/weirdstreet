@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+struct WeirdConstants {
+  enum ServerResponses {
+    case success
+    case failure
+  }
+}

@@ -7,3 +7,15 @@
 //
 
 import Foundation
+
+class Neighborhood {
+  private var _name: String!
+  
+  var name: String {
+    get {
+      return _name
+    } set {
+      _name = newValue
+    }
+  }
+}

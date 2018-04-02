@@ -7,35 +7,34 @@
     <key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
     <string>ca-app-pub-3940256099942544/4411468910</string>
     <key>CLIENT_ID</key>
-    <string>50077944557-b4dhufh1c6dof24e6gu06fd29j7sps43.apps.googleusercontent.com</string>
+    <string>2790829691-ipmb7k1o4ueldmv4h5qpq8msll29kue9.apps.googleusercontent.com</string>
     <key>REVERSED_CLIENT_ID</key>
-    <string>com.googleusercontent.apps.50077944557-b4dhufh1c6dof24e6gu06fd29j7sps43</string>
+    <string>com.googleusercontent.apps.2790829691-ipmb7k1o4ueldmv4h5qpq8msll29kue9</string>
     <key>API_KEY</key>
-    <string>AIzaSyDhTxBC6EoLLR07gteYtI8LYCugtLXz3Ws</string>
+    <string>AIzaSyAP7pw5Avj7jwJSf0ymXnhmeCJmSoSwPWA</string>
     <key>GCM_SENDER_ID</key>
-    <string>50077944557</string>
+    <string>2790829691</string>
     <key>PLIST_VERSION</key>
     <string>1</string>
     <key>BUNDLE_ID</key>
-    <string>com.ios.WeirdStreet</string>
+    <string>weirdstreet.WeirdStreetApp</string>
     <key>PROJECT_ID</key>
-    <string>weirdstreet-784d9</string>
+    <string>weird-street</string>
     <key>STORAGE_BUCKET</key>
-    <string>weirdstreet-784d9.appspot.com</string>
+    <string>weird-street.appspot.com</string>
     <key>IS_ADS_ENABLED</key>
-    <true/>
+    <true></true>
     <key>IS_ANALYTICS_ENABLED</key>
-    <false/>
+    <false></false>
     <key>IS_APPINVITE_ENABLED</key>
-    <false/>
+    <false></false>
     <key>IS_GCM_ENABLED</key>
-    <true/>
+    <true></true>
     <key>IS_SIGNIN_ENABLED</key>
-    <true/>
+    <true></true>
     <key>GOOGLE_APP_ID</key>
-    <string>1:50077944557:ios:87ab91e8f5ad45f2</string>
+    <string>1:2790829691:ios:7ccd5f0b68609e9b</string>
     <key>DATABASE_URL</key>
-    <string>https://weirdstreet-784d9.firebaseio.com</string>
+    <string>https://weird-street.firebaseio.com</string>
   </dict>
 </plist>
-

@@ -15,7 +15,7 @@ class NewTopicViewController: MasterViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    setRightNavigationTitle(title: "Create", segueIdentifier: "")
+    setRightNavigationTitle(title: "Create", segueIdentifier: "", centerTitle: "New Topic")
     tblNewTopic.dataSource = self
     tblNewTopic.delegate = self
   }
@@ -45,6 +45,14 @@ extension NewTopicViewController: UITableViewDataSource, UITableViewDelegate {
         return UITableViewCell()
       }
       
+      cell.configureCell(placeholder: "Description of topic")
+      return cell
+      
+    case 2:
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? TextFieldTableViewCell else {
+        return UITableViewCell()
+      }
+      
       cell.configureColorTopicCell()
       return cell
       
@@ -55,5 +63,11 @@ extension NewTopicViewController: UITableViewDataSource, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 51
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if indexPath.row == 2 {
+      performSegue(withIdentifier: "toSelectColor", sender: nil)
+    }
   }
 }

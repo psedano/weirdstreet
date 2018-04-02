@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+protocol SelectNeighborhoodPresentable {
+  func getAllNeighborhoods()
+}
+
+protocol SelectNeighborhoodViewable: class {
+  func showAllNeighborhoods(neighborhoods: [Neighborhood])
+}

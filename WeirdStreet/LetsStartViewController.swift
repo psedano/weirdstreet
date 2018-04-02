@@ -8,28 +8,51 @@
 
 import UIKit
 
-class LetsStartViewController: UIViewController {
+class LetsStartViewController: MasterViewController {
+  @IBOutlet weak var emailInput: WeirdTextField!
+  @IBOutlet weak var emailPassword: WeirdTextField!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    buildHeaderNavigation()
+  }
+  
+  func buildHeaderNavigation() {
+    delegate = self
+    emailInput.getWhiteTextField()
+    emailPassword.getWhiteTextField()
+    emailInput.delegate = self
+    emailPassword.delegate = self
+    setRightNavigationTitle(title: "Signup", segueIdentifier: "toRegistrationAddress")
+  }
+  
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    view.endEditing(true)
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    let nextViewController = segue.destination as! RegistrationAddressViewController
+    nextViewController.newUser = NewUser()
+    nextViewController.newUser.email = emailInput.text!
+    nextViewController.newUser.password = emailPassword.text!
+  }
+}
 
-        // Do any additional setup after loading the view.
+extension LetsStartViewController: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    textField.endEditing(true)
+    return true
+  }
+  
+  func textFieldDidEndEditing(_ textField: UITextField) {
+    textField.resignFirstResponder()
+  }
+}
+
+extension LetsStartViewController: MasterViewControllerDelegate {
+  func performNextViewController(segue: String) {
+    if emailInput.text != "" && emailPassword.text != "" {
+      performSegue(withIdentifier: segue, sender: nil)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+  }
 }

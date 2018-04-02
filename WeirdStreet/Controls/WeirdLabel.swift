@@ -9,13 +9,10 @@
 import UIKit
 
 class WeirdLabel: UILabel {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    self.textColor = UIColor.WeirdColors.WSLabelColor
+    self.tintColor = UIColor.WeirdColors.WSLabelColor
+    self.font = UIFont(name: "Arial", size: 12)
+  }
 }

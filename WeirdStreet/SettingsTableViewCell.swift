@@ -9,6 +9,9 @@
 import UIKit
 
 class SettingsTableViewCell: UITableViewCell {
+  @IBOutlet weak var imageRow: UIImageView!
+  @IBOutlet weak var lblDescription: UILabel!
+  @IBOutlet weak var arrowImage: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -8,28 +8,48 @@
 
 import UIKit
 
-class RegistrationAddressViewController: UIViewController {
+class RegistrationAddressViewController: MasterViewController {
+  @IBOutlet weak var txtStreet1️⃣: WeirdTextField!
+  @IBOutlet weak var txtStreet2️⃣: WeirdTextField!
+  @IBOutlet weak var txtCity🏙: WeirdTextField!
+  @IBOutlet weak var txtState: WeirdTextField!
+  @IBOutlet weak var txtZipCode: WeirdTextField!
+  var newUser: NewUser!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    setupUI()
+    delegate = self
+  }
+  
+  func setupUI() {
+    setRightNavigationTitle(title: "Next", segueIdentifier: "toSelectNeighborhood")
+    addProgressBar(1, totalSections: 3)
+    txtStreet1️⃣.getWhiteTextField()
+    txtStreet2️⃣.getWhiteTextField()
+    txtCity🏙.getWhiteTextField()
+    txtState.getWhiteTextField()
+    txtZipCode.getWhiteTextField()
+  }
+}
 
-        // Do any additional setup after loading the view.
+extension RegistrationAddressViewController: MasterViewControllerDelegate {
+  func performNextViewController(segue: String) {
+    if txtStreet1️⃣.text != "" && txtCity🏙.text != ""  && txtState.text != "" && txtZipCode.text != "" {
+      performSegue(withIdentifier: segue, sender: nil)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    newUser.street1 = txtStreet1️⃣.text!
+    if let street2 = txtStreet2️⃣.text, street2 != "" {
+      newUser.street2 = txtStreet2️⃣.text!
     }
+    newUser.city = txtCity🏙.text!
+    newUser.state = txtState.text!
+    newUser.zipCode = txtZipCode.text!
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    let neighborhoodVC = segue.destination as! SelectNeighborhoodViewController
+    neighborhoodVC.newUser = newUser
+  }
 }

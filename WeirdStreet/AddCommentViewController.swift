@@ -8,28 +8,36 @@
 
 import UIKit
 
-class AddCommentViewController: UIViewController {
+class AddCommentViewController: MasterViewController {
+  var selectedFeedback: String!
+  let descriptions = ["We are so sorry. What could we do better?",
+                      "Okay is okay. What could we do better?",
+                      "Awesome! What is it that you like?"]
+  @IBOutlet weak var imgReaction: UIImageView!
+  @IBOutlet weak var lblDescription: UILabel!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    delegate = self
+    setRightNavigationTitle(title: "Send", segueIdentifier: "toFeedbackResult")
+    imgReaction.image = UIImage(named: selectedFeedback)
+    
+    if selectedFeedback == "bad" {
+      lblDescription.text = descriptions[0]
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    if selectedFeedback == "okay" {
+      lblDescription.text = descriptions[1]
     }
-    */
+    
+    if selectedFeedback == "great" {
+      lblDescription.text = descriptions[2]
+    }
+  }
+}
 
+extension AddCommentViewController: MasterViewControllerDelegate {
+  func performNextViewController(segue: String) {
+    performSegue(withIdentifier: segue, sender: nil)
+  }
 }

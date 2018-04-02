@@ -9,17 +9,39 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+  @IBOutlet weak var loginButton: WeirdButton!
+  @IBOutlet weak var emailText: WeirdTextField!
+  @IBOutlet weak var passwordText: WeirdTextField!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
+    self.navigationController?.isNavigationBarHidden = true
+    loginButton.setTitle("Log in", for: .normal)
+    loginButton.deactivateButton()
+    emailText.placeholder = "Email"
+    passwordText.placeholder = "Password"
+    emailText.delegate = self
+    passwordText.delegate = self
   }
+}
 
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
+extension LoginViewController: UITextFieldDelegate {
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    guard let emailInput = emailText.text, let passwordInput = passwordText.text else {
+      return false
+    }
+    
+    !emailInput.isEmpty && !passwordInput.isEmpty ? loginButton.activateButton() : loginButton.deactivateButton()
+    
+    return true
   }
-
-
+  
+  func textFieldDidEndEditing(_ textField: UITextField) {
+    guard let emailInput = emailText.text, let passwordInput = passwordText.text else {
+      return
+    }
+    
+    !emailInput.isEmpty && !passwordInput.isEmpty ? loginButton.activateButton() : loginButton.deactivateButton()
+  }
 }
 

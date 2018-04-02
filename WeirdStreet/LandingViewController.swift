@@ -9,27 +9,20 @@
 import UIKit
 
 class LandingViewController: UIViewController {
-
+  @IBOutlet weak var buttonContinue: WeirdButton!
+  @IBOutlet weak var loginButton: WeirdButton!
+  
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+      super.viewDidLoad()
+      self.navigationController?.isNavigationBarHidden = true
+      buttonContinue.setTitle("Join Your Neighborhood", for: .normal)
+      buttonContinue.activateButton(withBold: true)
+      loginButton.setTitle("Log In", for: .normal)
+      loginButton.basicButton()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
